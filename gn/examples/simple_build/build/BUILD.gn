@@ -12,10 +12,8 @@ config("compiler_defaults") {
 }
 
 config("executable_ldconfig") {
-  if (!is_mac) {
-    ldflags = [
-      "-Wl,-rpath=\$ORIGIN/",
-      "-Wl,-rpath-link=",
-    ]
-  }
+  ldflags = [
+    "-Wl,-rpath=\$ORIGIN/",
+    "-Wl,-rpath-link=",
+  ]
 }

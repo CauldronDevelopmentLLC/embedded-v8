@@ -5,11 +5,7 @@ GN is a meta-build system that generates build files for
 
 Related resources:
 
-  * Documentation in [docs/](https://gn.googlesource.com/gn/+/master/docs/). In
-    particular [GN Quick Start
-    guide](https://gn.googlesource.com/gn/+/master/docs/quick_start.md)
-    and the [reference](https://gn.googlesource.com/gn/+/master/docs/reference.md)
-    (the latter is all builtin help converted to a single file).
+  * Documentation in [docs/](https://gn.googlesource.com/gn/+/master/docs/).
   * An introductory [presentation](https://docs.google.com/presentation/d/15Zwb53JcncHfEwHpnG_PoIbbzQ3GQi_cpujYwbpcbZo/edit?usp=sharing).
   * The [mailing list](https://groups.google.com/a/chromium.org/forum/#!forum/gn-dev).
 
@@ -42,13 +38,6 @@ and `AR`.
 There is a simple example in [examples/simple_build](examples/simple_build)
 directory that is a good place to get started with the minimal configuration.
 
-To build and run the simple example with the default gcc compiler:
-
-    cd examples/simple_build
-    ../../out/gn gen -C out
-    ninja -C out
-    ./out/hello
-
 For a maximal configuration see the Chromium setup:
   * [.gn](https://cs.chromium.org/chromium/src/.gn)
   * [BUILDCONFIG.gn](https://cs.chromium.org/chromium/src/build/config/BUILDCONFIG.gn)
@@ -79,16 +68,12 @@ version of how to patch is:
 Then, to upload a change for review:
 
     git commit
-    git push origin HEAD:refs/for/master
-
-The first time you do this you'll get an error from the server about a missing
-change-ID. Follow the directions in the error message to install the change-ID
-hook and run `git commit --amend` to apply the hook to the current commit.
+    git cl upload --gerrit
 
 When revising a change, use:
 
     git commit --amend
-    git push origin HEAD:refs/for/master
+    git cl upload --gerrit
 
 which will add the new changes to the existing code review, rather than creating
 a new one.

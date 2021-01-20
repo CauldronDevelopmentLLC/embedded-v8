@@ -58,6 +58,11 @@ user-defined function calls, for example (templates are the closest thing). As
 per the above design philosophy, if you need this kind of thing you're probably
 doing it wrong.
 
+The variable `sources` has a special rule: when assigning to it, a list
+of exclusion patterns is applied to it. This is designed to
+automatically filter out some types of files. See `gn help
+set_sources_assignment_filter` and `gn help label_pattern` for more.
+
 The full grammar for language nerds is available in `gn help grammar`.
 
 ### Strings
@@ -111,7 +116,7 @@ You can remove items from a list:
 ```
 a = [ "first", "second", "third", "first" ]
 b = a - [ "first" ]  # [ "second", "third" ]
-a -= [ "second" ]  # [ "first", "third", "first" ]
+a -= [ "second" ]  # [ "first", "third", "fourth" ]
 ```
 
 The - operator on a list searches for matches and removes all matching
@@ -466,7 +471,7 @@ root_build_dir) ```
 
 Patterns are used to generate the output file names for a given set of
 inputs for custom target types, and to automatically remove files from
-the list values (see `gn help filter_include` and `gn help filter_exclude`).
+the `sources` variable (see `gn help set_sources_assignment_filter`).
 
 They are like simple regular expressions. See `gn help label_pattern`
 for more.
