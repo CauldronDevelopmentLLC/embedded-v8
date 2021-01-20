@@ -449,7 +449,7 @@ void CastCheck<false>::Perform(T* data) {}
 template <class T>
 V8_INLINE void PerformCastCheck(T* data) {
   CastCheck<std::is_base_of<Data, T>::value &&
-            !std::is_same<Data, std::remove_cv_t<T>>::value>::Perform(data);
+            !std::is_same<Data, typename std::remove_cv<T>::type>::value>::Perform(data);
 }
 
 // A base class for backing stores, which is needed due to vagaries of
