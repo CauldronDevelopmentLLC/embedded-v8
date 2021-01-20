@@ -1,0 +1,2 @@
+checkout_fuchsia_for_arm64_host = false
+checkout_google_benchmark = false
