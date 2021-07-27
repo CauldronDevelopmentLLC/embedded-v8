@@ -27,9 +27,12 @@ sed -i 's/thread-count=4/thread-count=1/g' build/config/compiler/BUILD.gn
 Also edited gn to not look for ``.git``.  A few other minor edits.
 
 ## Build
-```
-python gn/build/gen.py
-ninja -C gn/out
-./gn/out/gn gen --args='is_debug=false use_custom_libcxx=false is_clang=false v8_enable_i18n_support=false v8_monolithic=true v8_use_external_startup_data=false disable_libfuzzer=true use_aura=false use_dbus=false use_ozone=false use_sysroot=false use_udev=false use_x11=false use_gio=false use_glib=false v8_has_valgrind=true' out
-ninja -C out v8_monolith
-```
+
+    ./build.sh
+
+## Use with C!
+
+To use this from cbang you need to set an envionrment variable pointing to the
+directory where you cloned this repository.
+
+    export V8_HOME=/path/to/base/directory/embedded-v8
